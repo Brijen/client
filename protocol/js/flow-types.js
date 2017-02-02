@@ -4567,7 +4567,7 @@ export type identifyIdentify2RpcParam = Exact<{
   allowEmptySelfID?: boolean,
   noSkipSelf?: boolean,
   canSuppressUI?: boolean,
-  chatGUIMode?: boolean,
+  identifyBehavior?: TLFIdentifyBehavior,
   forceDisplay?: boolean
 }>
 
