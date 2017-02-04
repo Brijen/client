@@ -174,10 +174,11 @@ function AttachmentMessageGeneric ({message, onOpenInFileUI, onLoadAttachment}: 
 }
 
 function AttachmentMessagePreviewImage ({message, onOpenInFileUI, onOpenInPopup}: {message: Constants.AttachmentMessage, onOpenInFileUI: () => void, onOpenInPopup: () => void}) {
+  const canOpen = message.messageState !== 'uploading'
   return (
-    <Box style={{...globalStyles.flexBoxColumn, ...globalStyles.clickable, flex: 1}}>
+    <Box style={{...globalStyles.flexBoxColumn, ...(canOpen ? globalStyles.clickable : {}), flex: 1}}>
       <AttachmentTitle {...message} />
-      <PreviewImageWithInfo message={message} onOpenInFileUI={onOpenInFileUI} onOpenInPopup={onOpenInPopup} />
+      <PreviewImageWithInfo message={message} onOpenInFileUI={onOpenInFileUI} onOpenInPopup={canOpen ? onOpenInPopup : null} />
     </Box>
   )
 }
